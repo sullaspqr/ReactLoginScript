@@ -25,7 +25,7 @@ fetchHitelesitessel.interceptors.request.use(
             ...config,
             headers: {
                 ...config.headers,
-                Authorization: 'Bearer ${accessToken}',
+                Authorization: `Bearer ${accessToken}`,
             }
         };
     },

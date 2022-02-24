@@ -1,7 +1,6 @@
 import React from "react";
-import reactRouterDom from "react-router-dom";
-import { useEffect, useState } from React;
-import { useHistory, NavLink } from reactRouterDom;
+import { useEffect, useState } from "react";
+import { useHistory, NavLink } from "react-router-dom";
 import { fetchHitelesitessel } from "./AuthService";
 import { Kijelentkezes } from "./Kijelentkezes";
 export function SzallasLista() {
@@ -62,4 +61,4 @@ export function SzallasLista() {
         </div>
       );
     }
-      
+    export default SzallasLista;

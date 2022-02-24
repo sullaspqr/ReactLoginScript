@@ -15,3 +15,4 @@ export function Kijelentkezes() {
         >Kijelentkezés</button>
     );
 }
+export default Kijelentkezes;

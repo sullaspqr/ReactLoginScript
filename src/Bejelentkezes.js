@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { login } from "./AuthService";
 export function Bejelentkezes() {
@@ -10,7 +10,7 @@ export function Bejelentkezes() {
         login(e.target.elements.email.value, e.target.elements.password.value)
         .then(() => {
             setLoginPending(false);
-            history.push("/osszes-allas");
+            history.push("/osszes-szallas");
         })
         .catch((err) => {
             alert("Helytelen bejelentkezési adatok, kérjük próbáld újra!");
@@ -47,6 +47,6 @@ export function Bejelentkezes() {
     </div>
   );
 }
-
+export default Bejelentkezes;
 
 
