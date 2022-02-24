@@ -3,6 +3,7 @@ import reactRouterDom from "react-router-dom";
 import { useEffect, useState } from React;
 import { useHistory, NavLink } from reactRouterDom;
 import { fetchHitelesitessel } from "./AuthService";
+import { Kijelentkezes } from "./Kijelentkezes";
 export function SzallasLista() {
     const [szallasok, setSzallasok] = useState([]);
     const [isPending, setPending] =useState(false);

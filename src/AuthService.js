@@ -18,17 +18,38 @@ export function logout() {
 export const fetchHitelesitessel = axios.create();
 fetchHitelesitessel.interceptors.request.use(
     (config) => {
-
+        if (!accessToken) {
+            return config;
+        }
+        return {
+            ...config,
+            headers: {
+                ...config.headers,
+                Authorization: 'Bearer ${accessToken}',
+            }
+        };
     },
-    (error) => {
-
-    }
+    (error) => Promise.reject(error)
 );
 fetchHitelesitessel.interceptors.response.use(
-    (response) => {
-
-    },
+    (response) => response,
     (error) => {
-
+        if(error.response.status != 403) {
+            return Promise.reject(error);
+        }
+        const originalRequest = error.config;
+        if (originalRequest.isRetry) {
+            return Promise.reject(error);
+        }
+        originalRequest.isRetry = true;
+    
+        return axios
+        .get("https://kodbazis.hu/api/get-new-access-token", {
+            withCredentials: true,
+        })
+        .then((res) => {
+            accessToken = res.data.accessToken;
+        })
+        .then(() => fetchHitelesitessel(originalRequest));
     }
 );
